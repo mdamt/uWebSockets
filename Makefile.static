@@ -1,0 +1,17 @@
+OBJECTS := src/Extensions.o src/Group.o src/Networking.o src/Hub.o src/Node.o src/WebSocket.o src/HTTPSocket.o src/Socket.o src/Epoll.o
+CPPFLAGS := -std=c++11 -O3 -I src 
+
+all: $(OBJECTS) lib
+
+$(objects): %: src/%.cpp
+	$(CXX) $(CPPFLAGS) $(CFLAGS) -o src/$@ $<
+
+.PHONY: clean
+clean:
+	rm -f src/*.o
+	rm -f libuWS.a
+
+lib:
+	ar rcs libuWS.a $(OBJECTS) 
+
+
