@@ -5,7 +5,15 @@
 #define NETWORKING_UWS_H
 
 #include <openssl/opensslv.h>
+#ifdef LIBRESSL_VERSION_NUMBER
+#define MISSING_UP_REF
+#else
 #if OPENSSL_VERSION_NUMBER < 0x10100000L
+#define MISSING_UP_REF
+#endif
+#endif
+
+#ifdef MISSING_UP_REF
 #define SSL_CTX_up_ref(x) x->references++
 #define SSL_up_ref(x) x->references++
 #endif

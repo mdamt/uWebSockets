@@ -1,5 +1,5 @@
 OBJECTS := src/Extensions.o src/Group.o src/Networking.o src/Hub.o src/Node.o src/WebSocket.o src/HTTPSocket.o src/Socket.o src/Epoll.o
-CPPFLAGS := -std=c++11 -O3 -I src 
+CPPFLAGS := -std=c++11 -O3 -I src -I /home/mdamt/src/erpiko/deps/libressl/include 
 
 all: $(OBJECTS) lib
 
